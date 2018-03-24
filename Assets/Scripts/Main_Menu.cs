@@ -8,6 +8,9 @@ public class Main_Menu : MonoBehaviour
      *** Variables
      *************************************************************************************************/
      public string gameSceneName;
+     public GameObject aboutPanel;
+     public GameObject exitButtonEnabled;
+     public GameObject exitButtonDisabled;
 
 
      /*************************************************************************************************
@@ -16,6 +19,14 @@ public class Main_Menu : MonoBehaviour
      void Start()
      {
           Time.timeScale = 1f;
+
+          #if UNITY_WEBGL
+               exitButtonEnabled.SetActive(false);
+               exitButtonDisabled.SetActive(true);
+          #else
+               exitButtonEnabled.SetActive(true);
+               exitButtonDisabled.SetActive(false);
+          #endif
 
      }//void Start
 
@@ -50,5 +61,19 @@ public class Main_Menu : MonoBehaviour
           
      }//public void Exit_Game
      
-     
+
+     public void About_Panel_Open()
+     {
+          aboutPanel.SetActive(true);
+
+     }//public void About_Panel_Open
+
+
+     public void About_Panel_Close()
+     {
+          aboutPanel.SetActive(false);
+
+     }//public void About_Panel_Close
+
+
 }//public class UI_Menu_Buttons
